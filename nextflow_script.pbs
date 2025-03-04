@@ -1,0 +1,39 @@
+#!/bin/bash -l
+#PBS -l nodes=1:ppn=8:gpus=1           # Request 1 node and 8 CPUs
+#PBS -l mem=100gb               # Request 100 GB memory
+#PBS -l walltime=14:30:00       # Adjust time for multiple runs
+#PBS -e logs/                   # Error log directory
+#PBS -o logs/                   # Output log directory
+
+# Change to the directory where the job was submitted
+cd $PBS_O_WORKDIR
+#export APPTAINER_BIND="/kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/apptainer_cache"
+# Set Apptainer cache directory
+#export NXF_APPTAINER_CACHEDIR="/kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/apptainer_cache"
+
+# Load the Nextflow module
+module load Nextflow
+module load CUDA/12.1.1
+
+#CUDA_DEVICE=0
+# Define the ref_type options
+REF_TYPES=("noEC" "9celltypes")
+#REF_TYPES=("noEC")
+# Iterate over each ref_type
+for REF_TYPE in "${REF_TYPES[@]}"; do
+    echo "Running pipeline for ref_type: $REF_TYPE"
+    
+    nextflow run spotless-benchmark/main.nf -profile hpc \
+        --mode run_dataset \
+        --methods cell2location \
+        --c spotless-benchmark/conf/liver_mouse_visium.config \
+        --ref_type $REF_TYPES \
+        --annot annot_cd45 \
+        --file_type h5ad \
+        --gpu \
+        --skip_metrics \
+        -ansi-log false
+    
+    echo "Finished pipeline for ref_type: $REF_TYPE"
+done
+
