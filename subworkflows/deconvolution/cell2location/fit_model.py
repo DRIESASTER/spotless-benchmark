@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+
+##Here is where i tried a plethora of things trying to make it work to train in batches but kept running into issues i'll add some of the attempts in there simply to show that i've been busy
+
 import argparse as arp
 import os
 
@@ -152,6 +155,67 @@ def main():
     adata_vis_full.uns[f'mod_{batch}'] = adata_vis.uns['mod'].copy()
 
 
+
+
+        # Create and train the model
+        print(f"Creating and training model for batch {batch}...")
+        mod = cell2location.models.Cell2location(
+            adata_vis_batch, cell_state_df=inf_aver,
+            N_cells_per_location=args.n_cells_per_location,
+            detection_alpha=args.detection_alpha
+        )
+        mod.train(
+            max_epochs=args.epochs,
+            batch_size=None,  # Use full data for training
+            train_size=1,
+            use_gpu=cuda_device.isdigit()
+        )
+
+        # Export the posterior distribution for the current batch
+        print(f"Exporting posterior distribution for batch {batch}...")
+        adata_vis_batch = mod.export_posterior(
+            adata_vis_batch, sample_kwargs={
+                'num_samples': args.posterior_sampling,
+                'batch_size': mod.adata.n_obs,
+                'use_gpu': cuda_device.isdigit()
+            }
+        )
+
+        # Aggregate results into the full dataset
+        print(f"Aggregating results for batch {batch}...")
+        for k in adata_vis_batch.obsm.keys():
+            if k in adata_vis_full.obsm:
+                adata_vis_full.obsm[k][training_batch_index, :] = adata_vis_batch.obsm[k].copy()
+
+        # Save the model and results for the current batch
+        print(f"Saving model and results for batch {batch}...")
+        mod.save(os.path.join(output_folder, f'mod_batch_{batch}'), overwrite=True)
+        adata_vis_batch.write(os.path.join(output_folder, f'sp_batch_{batch}.h5ad'))
+
+    # Save the full aggregated dataset
+    print("Saving the full aggregated dataset...")
+    adata_vis_full.write(os.path.join(output_folder, 'sp_full.h5ad'))
+
+    # Export proportion file
+    print("Exporting proportion file...")
+    props = adata_vis_full.obsm['q05_cell_abundance_w_sf']
+    print("Columns before renaming:", props.columns)
+    props = props.rename(columns={x: x.replace("q05_cell_abundance_w_sf_", "") for x in props.columns})
+    print("Columns after renaming:", props.columns)
+    props = props.div(props.sum(axis=1), axis='index')
+    props.to_csv(os.path.join(output_folder, 'proportions.tsv'), sep="\t")
+    print("Proportions file saved successfully.")
+
+
+
+
+
+
+
+
+
+
+
     # # prepare anndata for cell2location model
     # scvi.data.setup_anndata(adata=adata_vis)
     #
@@ -194,6 +258,99 @@ def main():
     #                     index=["row"+str(i) for i in range(10)],
     #                     columns=["col"+str(i) for i in range(10)])
     # df.to_csv(os.path.join(output_folder, 'proportions.tsv'), sep="\t")
+
+
+mod.train(max_epochs=args.epochs,
+              # train using full data (batch_size=None)
+              batch_size=None,
+              # use all data points in training because
+              # we need to estimate cell abundance at all locations
+              train_size=1,
+              use_gpu=cuda_device.isdigit())
+
+    # Export the estimated cell abundance (summary of the posterior distribution).
+    adata_vis = mod.export_posterior(
+        adata_vis, sample_kwargs={'num_samples': args.posterior_sampling,
+                                  'batch_size': mod.adata.n_obs, 'use_gpu': cuda_device.isdigit()}
+    )
+
+    # Save model and anndata object with results
+    mod.save(output_folder, overwrite=True)
+    adata_vis.write(os.path.join(output_folder, 'sp.h5ad'))
+
+    # Export proportion file, but first rename columns and divide by rowSums
+    props = adata_vis.obsm['q05_cell_abundance_w_sf']
+    props = props.rename(columns={x: x.replace("q05cell_abundance_w_sf_", "") for x in props.columns})
+    props = props.div(props.sum(axis=1), axis='index')
+    props.to_csv(os.path.join(output_folder, 'proportions.tsv'), sep="\t")
+
+    # df = pd.DataFrame(data=np.random.normal(size=(10,10)),
+    #                     index=["row"+str(i) for i in range(10)],
+    #                     columns=["col"+str(i) for i in range(10)])
+    # df.to_csv(os.path.join(output_folder, 'proportions.tsv'), sep="\t")
+
+        # Subset the data for the current batch
+        print(f"Subsetting data for batch {batch}...")
+        training_batch_index = adata_vis_full.obs['training_batch'] == batch
+        adata_vis_batch = adata_vis_full[training_batch_index, :].copy()
+
+        # Prepare anndata for the Cell2location model
+        print(f"Preparing anndata for batch {batch}...")
+        cell2location.models.Cell2location.setup_anndata(
+            adata=adata_vis_batch, batch_key="training_batch"  # Use 'training_batch' as the batch key
+        )
+
+        # Create and train the model
+        print(f"Creating and training model for batch {batch}...")
+        mod = cell2location.models.Cell2location(
+            adata_vis_batch, cell_state_df=inf_aver,
+            N_cells_per_location=args.n_cells_per_location,
+            detection_alpha=args.detection_alpha
+        )
+        mod.train(
+            max_epochs=args.epochs,
+            batch_size=None,  # Use full data for training
+            train_size=1,
+            use_gpu=cuda_device.isdigit()
+        )
+
+        # Export the posterior distribution for the current batch
+        print(f"Exporting posterior distribution for batch {batch}...")
+        adata_vis_batch = mod.export_posterior(
+            adata_vis_batch, sample_kwargs={
+                'num_samples': args.posterior_sampling,
+                'batch_size': mod.adata.n_obs,
+                'use_gpu': cuda_device.isdigit()
+            }
+        )
+
+        # Aggregate results into the full dataset
+        print(f"Aggregating results for batch {batch}...")
+        for k in adata_vis_batch.obsm.keys():
+            if k in adata_vis_full.obsm:
+                adata_vis_full.obsm[k][training_batch_index, :] = adata_vis_batch.obsm[k].copy()
+
+        # Save the model and results for the current batch
+        print(f"Saving model and results for batch {batch}...")
+        mod.save(os.path.join(output_folder, f'mod_batch_{batch}'), overwrite=True)
+        adata_vis_batch.write(os.path.join(output_folder, f'sp_batch_{batch}.h5ad'))
+
+    # Save the full aggregated dataset
+    print("Saving the full aggregated dataset...")
+    adata_vis_full.write(os.path.join(output_folder, 'sp_full.h5ad'))
+
+    # Export proportion file
+    print("Exporting proportion file...")
+    props = adata_vis_full.obsm['q05_cell_abundance_w_sf']
+    print("Columns before renaming:", props.columns)
+    props = props.rename(columns={x: x.replace("q05_cell_abundance_w_sf_", "") for x in props.columns})
+    print("Columns after renaming:", props.columns)
+    props = props.div(props.sum(axis=1), axis='index')
+    props.to_csv(os.path.join(output_folder, 'proportions.tsv'), sep="\t")
+    print("Proportions file saved successfully.")
+
+
+if __name__ == '__main__':
 
 
 if __name__ == '__main__':
