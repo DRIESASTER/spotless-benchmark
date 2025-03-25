@@ -1,0 +1,26 @@
+#!/bin/bash -l
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l mem=40gb
+#PBS -l walltime=2:00:00
+#PBS -o test2.out
+#PBS -e test.err
+
+# Load modules and set environment variables
+module load Nextflow
+export NXF_APPTAINER_CACHEDIR="$VSC_SCRATCH/singularity"
+export APPTAINER_TMPDIR="$VSC_SCRATCH"
+mkdir -p "$NXF_APPTAINER_CACHEDIR"
+
+# Change to the working directory
+cd $PBS_O_WORKDIR
+
+# Run Nextflow
+nextflow run main.nf -profile hpc \
+  --methods cell2location \
+  --sc_input unit-test/test_sc_data.rds \
+  --sp_input unit-test/test_sp_data.rds \
+  --annot subclass \
+  --gpu \
+echo "Nextflow run completed."
+
+

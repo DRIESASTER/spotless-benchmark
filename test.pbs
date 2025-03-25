@@ -1,0 +1,27 @@
+#!/bin/bash -l
+#PBS -l nodes=1:ppn=8  # Adjust ppn as needed
+#PBS -l mem=40gb        # Adjust memory as needed
+#PBS -l walltime=2:30:00 # Adjust walltime as needed
+#PBS -o nextflow_test.out
+#PBS -e nextflow_local_docker.err
+
+# Change to the directory where the job was submitted
+cd $PBS_O_WORKDIR
+
+#export APPTAINER_BIND="/kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/apptainer_cache"
+# Set Apptainer cache directory
+#export NXF_APPTAINER_CACHEDIR="/kyukon/data/gent/courses/2024/design_project_C003698/groups/grop05/apptainer_cache"
+export NXF_APPTAINER_CACHEDIR="$VSC_SCRATCH"
+# Load necessary modules (if needed)
+module load Nextflow # Or whatever module is needed for nextflow
+
+
+
+# Run Nextflow with local and docker profiles
+nextflow run main.nf -profile hpc \
+    --methods cell2location \
+    --sc_input unit-test/test_sc_data.rds \
+    --sp_input unit-test/test_sp_data.rds \
+    --annot subclass
+
+echo "Nextflow run completed."

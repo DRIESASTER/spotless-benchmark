@@ -1,0 +1,482 @@
+
+ N E X T F L O W   ~  version 24.10.2
+
+
+ N E X T F L O W   ~  version 24.10.2
+
+Launching `main.nf` [pensive_swanson] DSL2 - revision: 65041d7c67
+
+Launching `main.nf` [elated_gilbert] DSL2 - revision: 65041d7c67
+
+Running the pipeline on the provided data...
+The single-cell data is of rds format and the spatial data is of rds format.
+
+Parameters:
+cell2location: [build:, fit:]
+stereoscope: 
+spotlight: 
+destvi: [build:, fit:]
+dstg: [dir:]
+rctd: 
+seurat: 
+tangram: 
+stride: 
+Running the pipeline on the provided data...
+The single-cell data is of rds format and the spatial data is of rds format.
+
+Parameters:
+cell2location: [build:, fit:]
+stereoscope: 
+spotlight: 
+destvi: [build:, fit:]
+dstg: [dir:]
+rctd: 
+seurat: 
+tangram: 
+stride: 
+[-        ] runMethods:convert_sc          -
+[-        ] runMethods:convert_sp          -
+[-        ] run…ds:buildCell2locationModel -
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+[-        ] runMethods:convert_sc          -
+[-        ] runMethods:convert_sp          -
+[-        ] run…ds:buildCell2locationModel -
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+
+executor >  local (2)
+[99/d4677b] run…_sc (convert_test_sc_data) | 0 of 1
+[f3/987d20] run…_sp (convert_test_sp_data) | 0 of 1
+[-        ] run…ds:buildCell2locationModel -
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+
+executor >  local (2)
+[7f/073aff] run…_sc (convert_test_sc_data) | 0 of 1
+[e2/b2826b] run…_sp (convert_test_sp_data) | 0 of 1
+[-        ] run…ds:buildCell2locationModel -
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+
+executor >  local (2)
+[7f/073aff] run…_sc (convert_test_sc_data) | 0 of 1
+[e2/b2826b] run…_sp (convert_test_sp_data) | 1 of 1 ✔
+[-        ] run…ds:buildCell2locationModel -
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+
+executor >  local (2)
+[99/d4677b] run…_sc (convert_test_sc_data) | 0 of 1
+[f3/987d20] run…_sp (convert_test_sp_data) | 1 of 1 ✔
+[-        ] run…ds:buildCell2locationModel -
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+
+executor >  local (2)
+[99/d4677b] run…_sc (convert_test_sc_data) | 1 of 1 ✔
+[f3/987d20] run…_sp (convert_test_sp_data) | 1 of 1 ✔
+[-        ] run…ds:buildCell2locationModel -
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+Building cell2location model with GPU...
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+
+executor >  local (3)
+[7f/073aff] run…_sc (convert_test_sc_data) | 1 of 1 ✔
+[e2/b2826b] run…_sp (convert_test_sp_data) | 1 of 1 ✔
+[81/79fb5e] run…l (c2l_build_test_sc_data) | 0 of 1
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+Building cell2location model with GPU...
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+
+executor >  local (3)
+[99/d4677b] run…_sc (convert_test_sc_data) | 1 of 1 ✔
+[f3/987d20] run…_sp (convert_test_sp_data) | 1 of 1 ✔
+[a1/546f77] run…l (c2l_build_test_sc_data) | 0 of 1
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+Building cell2location model with GPU...
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+
+executor >  local (3)
+[7f/073aff] run…_sc (convert_test_sc_data) | 1 of 1 ✔
+[e2/b2826b] run…_sp (convert_test_sp_data) | 1 of 1 ✔
+[81/79fb5e] run…l (c2l_build_test_sc_data) | 1 of 2, failed: 1, retries: 1
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+Building cell2location model with GPU...
+Building cell2location model with GPU...
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+[81/79fb5e] NOTE: Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1) -- Execution is retried (1)
+
+executor >  local (4)
+[99/d4677b] run…_sc (convert_test_sc_data) | 1 of 1 ✔
+[f3/987d20] run…_sp (convert_test_sp_data) | 1 of 1 ✔
+[42/7d78e0] run…l (c2l_build_test_sc_data) | 1 of 2, failed: 1, retries: 1
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+Building cell2location model with GPU...
+Building cell2location model with GPU...
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+[a1/546f77] NOTE: Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1) -- Execution is retried (1)
+
+executor >  local (4)
+[7f/073aff] run…_sc (convert_test_sc_data) | 1 of 1 ✔
+[e2/b2826b] run…_sp (convert_test_sp_data) | 1 of 1 ✔
+[64/650312] run…l (c2l_build_test_sc_data) | 1 of 2, failed: 1, retries: 1
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+Building cell2location model with GPU...
+Building cell2location model with GPU...
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+[81/79fb5e] NOTE: Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1) -- Execution is retried (1)
+
+executor >  local (5)
+[99/d4677b] run…_sc (convert_test_sc_data) | 1 of 1 ✔
+[f3/987d20] run…_sp (convert_test_sp_data) | 1 of 1 ✔
+[15/ee49e4] run…l (c2l_build_test_sc_data) | 2 of 3, failed: 2, retries: 2
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+Building cell2location model with GPU...
+Building cell2location model with GPU...
+Building cell2location model with GPU...
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+[a1/546f77] NOTE: Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1) -- Execution is retried (1)
+[42/7d78e0] NOTE: Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1) -- Execution is retried (2)
+
+executor >  local (5)
+[7f/073aff] run…_sc (convert_test_sc_data) | 1 of 1 ✔
+[e2/b2826b] run…_sp (convert_test_sp_data) | 1 of 1 ✔
+[8b/7bfefb] run…l (c2l_build_test_sc_data) | 2 of 3, failed: 2, retries: 2
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+Building cell2location model with GPU...
+Building cell2location model with GPU...
+Building cell2location model with GPU...
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+[81/79fb5e] NOTE: Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1) -- Execution is retried (1)
+[64/650312] NOTE: Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1) -- Execution is retried (2)
+
+executor >  local (5)
+[99/d4677b] run…_sc (convert_test_sc_data) | 1 of 1 ✔
+[f3/987d20] run…_sp (convert_test_sp_data) | 1 of 1 ✔
+[15/ee49e4] run…l (c2l_build_test_sc_data) | 2 of 3, failed: 2, retries: 2
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+Building cell2location model with GPU...
+Building cell2location model with GPU...
+Building cell2location model with GPU...
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+[a1/546f77] NOTE: Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1) -- Execution is retried (1)
+[42/7d78e0] NOTE: Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1) -- Execution is retried (2)
+ERROR ~ Error executing process > 'runMethods:buildCell2locationModel (c2l_build_test_sc_data)'
+
+Caused by:
+  Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1)
+
+
+Command executed:
+
+  source activate cell2loc_env
+  python /kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/spotless_group05/subworkflows/deconvolution/cell2location/build_model.py             test_sc_data.h5ad 0 -a subclass    -o $PWD
+
+Command exit status:
+  1
+
+Command output:
+  Parameters
+  ==========
+  Training epochs: 250
+  Posterior sampling: 1000
+  ==========
+
+Command error:
+  Parameters
+  ==========
+  Training epochs: 250
+  Posterior sampling: 1000
+  ==========
+  Traceback (most recent call last):
+    File "/kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/spotless_group05/subworkflows/deconvolution/cell2location/build_model.py", line 121, in <module>
+      main()
+    File "/kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/spotless_group05/subworkflows/deconvolution/cell2location/build_model.py", line 58, in main
+      import scanpy as sc
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/__init__.py", line 14, in <module>
+      from . import tools as tl
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/tools/__init__.py", line 1, in <module>
+      from ..preprocessing import pca
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/preprocessing/__init__.py", line 1, in <module>
+      from ._recipes import recipe_zheng17, recipe_weinreb17, recipe_seurat
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/preprocessing/_recipes.py", line 7, in <module>
+      from ._deprecated.highly_variable_genes import (
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/preprocessing/_deprecated/highly_variable_genes.py", line 11, in <module>
+      from .._utils import _get_mean_var
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/preprocessing/_utils.py", line 45, in <module>
+      @numba.njit(cache=True)
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/numba/core/decorators.py", line 211, in wrapper
+      disp.enable_caching()
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/numba/core/dispatcher.py", line 743, in enable_caching
+      self._cache = FunctionCache(self.py_func)
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/numba/core/caching.py", line 620, in __init__
+      self._impl = self._impl_class(py_func)
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/numba/core/caching.py", line 356, in __init__
+      "for file %r" % (qualname, source_path))
+  RuntimeError: cannot cache function 'sparse_mean_var_minor_axis': no locator available for file '/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/preprocessing/_utils.py'
+
+Work dir:
+  /kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/work/15/ee49e45ce0170007adb54d60f4160b
+
+Container:
+  /scratch/gent/474/vsc47426/singularity/csangara-sp_cell2location-latest.img
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+
+ -- Check '.nextflow.log' file for details
+
+executor >  local (5)
+[99/d4677b] run…_sc (convert_test_sc_data) | 1 of 1 ✔
+[f3/987d20] run…_sp (convert_test_sp_data) | 1 of 1 ✔
+[15/ee49e4] run…l (c2l_build_test_sc_data) | 3 of 3, failed: 3, retries: 2 ✘
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+Building cell2location model with GPU...
+Building cell2location model with GPU...
+Building cell2location model with GPU...
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+[a1/546f77] NOTE: Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1) -- Execution is retried (1)
+[42/7d78e0] NOTE: Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1) -- Execution is retried (2)
+ERROR ~ Error executing process > 'runMethods:buildCell2locationModel (c2l_build_test_sc_data)'
+
+Caused by:
+  Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1)
+
+
+Command executed:
+
+  source activate cell2loc_env
+  python /kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/spotless_group05/subworkflows/deconvolution/cell2location/build_model.py             test_sc_data.h5ad 0 -a subclass    -o $PWD
+
+Command exit status:
+  1
+
+Command output:
+  Parameters
+  ==========
+  Training epochs: 250
+  Posterior sampling: 1000
+  ==========
+
+Command error:
+  Parameters
+  ==========
+  Training epochs: 250
+  Posterior sampling: 1000
+  ==========
+  Traceback (most recent call last):
+    File "/kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/spotless_group05/subworkflows/deconvolution/cell2location/build_model.py", line 121, in <module>
+      main()
+    File "/kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/spotless_group05/subworkflows/deconvolution/cell2location/build_model.py", line 58, in main
+      import scanpy as sc
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/__init__.py", line 14, in <module>
+      from . import tools as tl
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/tools/__init__.py", line 1, in <module>
+      from ..preprocessing import pca
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/preprocessing/__init__.py", line 1, in <module>
+      from ._recipes import recipe_zheng17, recipe_weinreb17, recipe_seurat
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/preprocessing/_recipes.py", line 7, in <module>
+      from ._deprecated.highly_variable_genes import (
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/preprocessing/_deprecated/highly_variable_genes.py", line 11, in <module>
+      from .._utils import _get_mean_var
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/preprocessing/_utils.py", line 45, in <module>
+      @numba.njit(cache=True)
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/numba/core/decorators.py", line 211, in wrapper
+      disp.enable_caching()
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/numba/core/dispatcher.py", line 743, in enable_caching
+      self._cache = FunctionCache(self.py_func)
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/numba/core/caching.py", line 620, in __init__
+      self._impl = self._impl_class(py_func)
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/numba/core/caching.py", line 356, in __init__
+      "for file %r" % (qualname, source_path))
+  RuntimeError: cannot cache function 'sparse_mean_var_minor_axis': no locator available for file '/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/preprocessing/_utils.py'
+
+Work dir:
+  /kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/work/15/ee49e45ce0170007adb54d60f4160b
+
+Container:
+  /scratch/gent/474/vsc47426/singularity/csangara-sp_cell2location-latest.img
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+
+ -- Check '.nextflow.log' file for details
+
+
+executor >  local (5)
+[7f/073aff] run…_sc (convert_test_sc_data) | 1 of 1 ✔
+[e2/b2826b] run…_sp (convert_test_sp_data) | 1 of 1 ✔
+[8b/7bfefb] run…l (c2l_build_test_sc_data) | 2 of 3, failed: 2, retries: 2
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+Building cell2location model with GPU...
+Building cell2location model with GPU...
+Building cell2location model with GPU...
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+[81/79fb5e] NOTE: Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1) -- Execution is retried (1)
+[64/650312] NOTE: Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1) -- Execution is retried (2)
+ERROR ~ Error executing process > 'runMethods:buildCell2locationModel (c2l_build_test_sc_data)'
+
+Caused by:
+  Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1)
+
+
+Command executed:
+
+  source activate cell2loc_env
+  python /kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/spotless_group05/subworkflows/deconvolution/cell2location/build_model.py             test_sc_data.h5ad 0 -a subclass    -o $PWD
+
+Command exit status:
+  1
+
+Command output:
+  Parameters
+  ==========
+  Training epochs: 250
+  Posterior sampling: 1000
+  ==========
+
+Command error:
+  Parameters
+  ==========
+  Training epochs: 250
+  Posterior sampling: 1000
+  ==========
+  Traceback (most recent call last):
+    File "/kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/spotless_group05/subworkflows/deconvolution/cell2location/build_model.py", line 121, in <module>
+      main()
+    File "/kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/spotless_group05/subworkflows/deconvolution/cell2location/build_model.py", line 58, in main
+      import scanpy as sc
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/__init__.py", line 14, in <module>
+      from . import tools as tl
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/tools/__init__.py", line 1, in <module>
+      from ..preprocessing import pca
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/preprocessing/__init__.py", line 2, in <module>
+      from ._simple import filter_cells, filter_genes
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/preprocessing/_simple.py", line 1046, in <module>
+      inplace: bool = False,
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/numba/core/decorators.py", line 211, in wrapper
+      disp.enable_caching()
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/numba/core/dispatcher.py", line 743, in enable_caching
+      self._cache = FunctionCache(self.py_func)
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/numba/core/caching.py", line 620, in __init__
+      self._impl = self._impl_class(py_func)
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/numba/core/caching.py", line 356, in __init__
+      "for file %r" % (qualname, source_path))
+  RuntimeError: cannot cache function '_downsample_array': no locator available for file '/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/preprocessing/_simple.py'
+
+Work dir:
+  /kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/work/8b/7bfefb75cb529b8031321454200406
+
+Container:
+  /scratch/gent/474/vsc47426/singularity/csangara-sp_cell2location-latest.img
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+
+ -- Check '.nextflow.log' file for details
+
+executor >  local (5)
+[7f/073aff] run…_sc (convert_test_sc_data) | 1 of 1 ✔
+[e2/b2826b] run…_sp (convert_test_sp_data) | 1 of 1 ✔
+[8b/7bfefb] run…l (c2l_build_test_sc_data) | 3 of 3, failed: 3, retries: 2 ✘
+[-        ] run…hods:fitCell2locationModel -
+[-        ] runMethods:formatC2L           -
+[-        ] computeMetrics                 -
+Building cell2location model with GPU...
+Building cell2location model with GPU...
+Building cell2location model with GPU...
+WARN: The `echo` directive has been deprecated - use to `debug` instead
+[81/79fb5e] NOTE: Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1) -- Execution is retried (1)
+[64/650312] NOTE: Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1) -- Execution is retried (2)
+ERROR ~ Error executing process > 'runMethods:buildCell2locationModel (c2l_build_test_sc_data)'
+
+Caused by:
+  Process `runMethods:buildCell2locationModel (c2l_build_test_sc_data)` terminated with an error exit status (1)
+
+
+Command executed:
+
+  source activate cell2loc_env
+  python /kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/spotless_group05/subworkflows/deconvolution/cell2location/build_model.py             test_sc_data.h5ad 0 -a subclass    -o $PWD
+
+Command exit status:
+  1
+
+Command output:
+  Parameters
+  ==========
+  Training epochs: 250
+  Posterior sampling: 1000
+  ==========
+
+Command error:
+  Parameters
+  ==========
+  Training epochs: 250
+  Posterior sampling: 1000
+  ==========
+  Traceback (most recent call last):
+    File "/kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/spotless_group05/subworkflows/deconvolution/cell2location/build_model.py", line 121, in <module>
+      main()
+    File "/kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/spotless_group05/subworkflows/deconvolution/cell2location/build_model.py", line 58, in main
+      import scanpy as sc
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/__init__.py", line 14, in <module>
+      from . import tools as tl
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/tools/__init__.py", line 1, in <module>
+      from ..preprocessing import pca
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/preprocessing/__init__.py", line 2, in <module>
+      from ._simple import filter_cells, filter_genes
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/preprocessing/_simple.py", line 1046, in <module>
+      inplace: bool = False,
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/numba/core/decorators.py", line 211, in wrapper
+      disp.enable_caching()
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/numba/core/dispatcher.py", line 743, in enable_caching
+      self._cache = FunctionCache(self.py_func)
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/numba/core/caching.py", line 620, in __init__
+      self._impl = self._impl_class(py_func)
+    File "/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/numba/core/caching.py", line 356, in __init__
+      "for file %r" % (qualname, source_path))
+  RuntimeError: cannot cache function '_downsample_array': no locator available for file '/opt/conda/envs/cell2loc_env/lib/python3.7/site-packages/scanpy/preprocessing/_simple.py'
+
+Work dir:
+  /kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/work/8b/7bfefb75cb529b8031321454200406
+
+Container:
+  /scratch/gent/474/vsc47426/singularity/csangara-sp_cell2location-latest.img
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+
+ -- Check '.nextflow.log' file for details
+
