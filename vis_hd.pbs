@@ -1,0 +1,44 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=8:gpus=1
+#PBS -l mem=48gb
+#PBS -l walltime=7:30:00
+#PBS -o hd2.out
+#PBS -e hd2.err
+
+# Load Nextflow module
+module load Nextflow
+
+# Set Singularity/Apptainer cache
+export NXF_APPTAINER_CACHEDIR="$VSC_SCRATCH/singularity"
+export APPTAINER_TMPDIR="$VSC_SCRATCH"
+mkdir -p "$NXF_APPTAINER_CACHEDIR"
+mkdir -p "/kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/work2"
+# Change to working directory
+cd "$PBS_O_WORKDIR"
+
+# Set paths to data
+SP_DATA_DIR="/kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/splitted_tissue/visium_HD"
+SC_DATA_FILE="/kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/liver_cell_data/liver_mouseStSt_nuclei_9celltypes_annot_cd45.rds"
+
+# Check if spatial data exists
+if [ ! -f "$SC_DATA_FILE" ]; then
+  echo "ERROR: Spatial data file not found: $SP_DATA_FILE"
+  exit 1
+fi
+
+# Run Nextflow for each scRNA-seq file (H5AD format)
+for sp_file in "$SP_DATA_DIR"/*part_*.rds; do
+  echo "Processing spRNA-seq file: $(basename "$sp_file")"
+  
+  nextflow run main.nf -work-dir "/kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/work2" -profile hpc \
+    --methods rctd \
+    --sc_input $SC_DATA_FILE \
+    --sp_input $sp_file \
+    --annot annot_cd45 \
+    --skip_metrics \
+    --gpu
+    -resume
+done
+
+echo "Nextflow runs completed for all single-cell data files."
+rm -r "/kyukon/data/gent/courses/2024/design_project_C003698/groups/group05/work2" 
